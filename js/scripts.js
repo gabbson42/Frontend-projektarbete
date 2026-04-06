@@ -216,4 +216,5 @@ function loadConfirmationPage(){
         Telefonnummer: ${nummer} <br>
         Email: ${mail} <br>
         </p>`;
+    localStorage.clear();
 }
