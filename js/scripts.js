@@ -117,10 +117,11 @@ if (document.getElementById("chosen-product")) {
       fName.classList.add("is-invalid");
       divName.innerHTML = "Ogiltigt Namn";
       isValidated = false;
+      fName.classList.remove("mb-4");
+      setTimeout(() => {divName.innerHTML = ""; fName.classList.add("mb-4");}, 3000)
     } else {
       fName.classList.remove("is-invalid");
       fName.classList.add("is-valid");
-      divName.innerHTML = "";
     }
 
     if (!fNumber.value.match(phoneRegex)) {
@@ -128,20 +129,24 @@ if (document.getElementById("chosen-product")) {
       divNumber.innerHTML =
         "Telefonnummer får innehålla siffror, bindestreck och parenteser. Max 20 tecken.";
       isValidated = false;
+      fNumber.classList.remove("mb-4");
+      setTimeout(() => {divNumber.innerHTML = ""; fNumber.classList.add("mb-4");}, 3000)
     } else {
       fNumber.classList.remove("is-invalid");
       fNumber.classList.add("is-valid");
-      divNumber.innerHTML = "";
     }
 
     if (fEmail.value.indexOf("@") == -1 || fNumber.value.length > 50) {
       fEmail.classList.add("is-invalid");
       divEmail.innerHTML = "E-postadressen måste innehålla @ och max 50 tecken";
       isValidated = false;
+      fEmail.classList.remove("mb-4");
+      setTimeout(() => {divEmail.innerHTML = ""; fEmail.classList.add("mb-4");}, 3000)
     } else {
       fEmail.classList.remove("is-invalid");
       fEmail.classList.add("is-valid");
       divEmail.innerHTML = "";
+      fEmail.classList.add("mb-4");
     }
 
     if (fStreet.value.length < 3 || fStreet.value.length > 50) {
@@ -149,20 +154,22 @@ if (document.getElementById("chosen-product")) {
       divStreet.innerHTML =
         "Gatuadressen måste innerhålla Minst 2 tecken och Max 50 tecken";
       isValidated = false;
+      fStreet.classList.remove("mb-4");
+      setTimeout(() => {divStreet.innerHTML = ""; fStreet.classList.add("mb-4");}, 3000)
     } else {
       fStreet.classList.remove("is-invalid");
       fStreet.classList.add("is-valid");
-      divStreet.innerHTML = "";
     }
 
     if (!pNumber.value.match(postRegex)) {
       pNumber.classList.add("is-invalid");
       divPost.innerHTML = "Postnummer måste consta exakt 5 siffror";
       isValidated = false;
+      pNumber.classList.remove("mb-4");
+      setTimeout(() => {divPost.innerHTML = ""; pNumber.classList.add("mb-4");}, 3000)
     } else {
       pNumber.classList.remove("is-invalid");
       pNumber.classList.add("is-valid");
-      divPost.innerHTML = "";
     }
 
     if (fRegion.value.length < 3 || fRegion.value.length >= 20) {
@@ -170,16 +177,23 @@ if (document.getElementById("chosen-product")) {
       divRegion.innerHTML =
         "Orten måste innehålla minnst 2 tecken och Max 20 tecken";
       isValidated = false;
+      fRegion.classList.remove("mb-4");
+      setTimeout(() => {divRegion.innerHTML = ""; fRegion.classList.add("mb-4");}, 3000)
     } else {
       fRegion.classList.remove("is-invalid");
       fRegion.classList.add("is-valid");
-      divRegion.innerHTML = "";
     }
 
     if (isValidated) {
       output = `
            <h1 class="fw-bolder">Tack för din beställning!</h1>
-            <p class="lead fw-normal text-white mb-0">Ordernummer: #${Math.floor(Math.random() * 1000)}</p>`;
+            <p class="lead fw-normal text-white mb-0">Ordernummer: #${Math.floor(Math.random() * 1000)}</p>
+            <p class="text-white">
+            Namn: ${fName.value} <br>
+            Address: ${fStreet.value}, ${pNumber.value}, ${fRegion.value} <br>
+            Telefonnummer: ${fNumber.value} <br>
+            Email: ${fEmail.value} <br>
+            </p>`;
       document.getElementById("order-text").innerHTML = output;
       document.getElementById("hiddenbox").removeAttribute("hidden");
       document.getElementById("purchaseForm").setAttribute("hidden", true);
