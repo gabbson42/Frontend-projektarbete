@@ -40,15 +40,25 @@
                             </div>
                         </div>
                     </header>
-                    <form>
+                    <form id="purchaseForm">
                         <label for="name" class="form-label">Namn</label>
                         <input type="name" id="name" class="form-control mb-4" placeholder="John Doe">
+
                         <label for="number" class="form-label">Telefonnummer</label>
-                        <input type="number" id="number" class="form-control mb-4" placeholder="T.ex. 0737004512">
+                        <input type="text" id="number" class="form-control mb-4" placeholder="T.ex. 0737004512">
+
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" id="email" class="form-control mb-4" placeholder="example@email.com"">
-                        <label for="address" class="form-label">Adress</label>
-                        <input type="address" id="address" class="form-control mb-4" placeholder="Adressvägen 42, 12345, Adressköping">
+                        <input type="email" id="email" class="form-control mb-4" placeholder="example@email.com">
+
+                        <label for="gata" class="form-label">Gata</label>
+                        <input type="text" id="street" class="form-control mb-4" placeholder="Adressvägen 42">
+
+                        <label for="postnumber" class="form-label">Postnummer</label>
+                        <input type="text" id="postNumber" class="form-control mb-4" placeholder="123 45">
+
+                        <label for="region" class="form-label">Ort</label>
+                        <input type="text" id="region" class="form-control mb-4" placeholder="Ortköping">
+
                         <button class="btn btn-outline-kademina mt-auto" id="order">Lägg beställning</button>
                     </form>
                 </div>
