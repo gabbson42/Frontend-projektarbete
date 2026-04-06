@@ -19,6 +19,9 @@ async function getData() {
       if (document.getElementById("chosen-product")) {
         loadPurchasePage();
       }
+      if(document.getElementById("order-text")) {
+        loadConfirmationPage();
+      }
     });
 }
 
@@ -110,7 +113,7 @@ if (document.getElementById("chosen-product")) {
       !pNumber.value ||
       !fRegion.value
     ) {
-      alert("Var god och fyll i formuläret");
+      alert("Var god och fyll i alla fält i formuläret");
     }
 
     if (fName.value.length < 3 || fName.value.length > 50) {
@@ -185,18 +188,32 @@ if (document.getElementById("chosen-product")) {
     }
 
     if (isValidated) {
-      output = `
-           <h1 class="fw-bolder">Tack för din beställning!</h1>
-            <p class="lead fw-normal text-white mb-0">Ordernummer: #${Math.floor(Math.random() * 1000)}</p>
-            <p class="text-white">
-            Namn: ${fName.value} <br>
-            Address: ${fStreet.value}, ${pNumber.value}, ${fRegion.value} <br>
-            Telefonnummer: ${fNumber.value} <br>
-            Email: ${fEmail.value} <br>
-            </p>`;
-      document.getElementById("order-text").innerHTML = output;
-      document.getElementById("hiddenbox").removeAttribute("hidden");
-      document.getElementById("purchaseForm").setAttribute("hidden", true);
+        localStorage.setItem("namn", fName.value)
+        localStorage.setItem("address", fStreet.value)
+        localStorage.setItem("postnummer", pNumber.value)
+        localStorage.setItem("ort", fRegion.value)
+        localStorage.setItem("nummer", fNumber.value)
+        localStorage.setItem("mail", fEmail.value)
+        window.location.assign("confirmation.html");
     }
   });
+}
+
+function loadConfirmationPage(){
+    const namn = localStorage.getItem("namn")
+    const address = localStorage.getItem("address")
+    const postnummer = localStorage.getItem("postnummer")
+    const ort = localStorage.getItem("ort")
+    const nummer = localStorage.getItem("nummer")
+    const mail = localStorage.getItem("mail")
+
+    document.getElementById("order-text").innerHTML = `
+        <h1 class="fw-bolder">Tack för din beställning!</h1>
+        <p class="lead fw-normal text-white mb-0">Ordernummer: #${Math.floor(Math.random() * 1000)}</p>
+        <p class="text-white">
+        Namn: ${namn} <br>
+        Address: ${address}, ${postnummer}, ${ort} <br>
+        Telefonnummer: ${nummer} <br>
+        Email: ${mail} <br>
+        </p>`;
 }
