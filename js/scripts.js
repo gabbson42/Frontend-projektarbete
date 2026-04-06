@@ -78,10 +78,61 @@ function loadPurchasePage(){
 
 document.getElementById("order").addEventListener("click", (e) => {
     e.preventDefault();
-    output = `
-        <h1 class="fw-bolder">Tack för din beställning!</h1>
-        <p class="lead fw-normal text-white mb-0">Ordernummer: #${Math.floor(Math.random() * 1000)}</p>`;
-    document.getElementById("order-text").innerHTML = output;
-    document.getElementById("hiddenbox").removeAttribute("hidden");
+
+    if(validation()){
+        output = `
+           <h1 class="fw-bolder">Tack för din beställning!</h1>
+            <p class="lead fw-normal text-white mb-0">Ordernummer: #${Math.floor(Math.random() * 1000)}</p>`;
+        document.getElementById("order-text").innerHTML = output;
+        document.getElementById("hiddenbox").removeAttribute("hidden");
+    }
 })
 
+function validation() {
+    const fName = document.getElementById('name').value;
+    const fNumber = document.getElementById('number').value;
+    const fEmail = document.getElementById('email').value;
+    const fStreet = document.getElementById('street').value;
+    const pNumber = document.getElementById('postNumber').value;
+    const fRegion = document.getElementById('region').value;
+
+    var phoneNumberExpression = /^[0-9()\-]{1,20}$/;
+    var phoneRegex = new RegExp(phoneNumberExpression);
+
+    var postNumberExpression = /^\d{3}\s?\d{2}$/;
+    var postRegex = new RegExp(postNumberExpression);
+
+    if(!fName || !fNumber || !fEmail || !fStreet || !pNumber || !fRegion){
+        alert("Var god och fyll i formuläret");
+        return false;
+    }else if(fName.length <3 || fName.length > 50) {
+        alert("Namnet måste vara minst 2 tecken och max 50 tecken");
+        return false;
+    }else if(!fNumber.match(phoneRegex)){
+        alert("Telefonnummer får innehålla siffror, bindestreck och parenteser. Max 20 tecken.");
+        return false;
+    }else if(fEmail.indexOf("@") == -1 || fNumber.length > 50){
+        alert("E-postadressen måste innehålla @ och max 50 tecken");
+        return false;
+    }else if(fStreet.length <3 || fStreet.length > 50){
+        alert("Gatuadressen måste innerhålla Minst 2 tecken och Max 50 tecken");
+        return false;
+     }else if(!pNumber.match(postRegex)){
+        alert("Postnummer måste vara exakt 5 siffror");
+        return false;
+    }else if(fRegion.length <3 || fRegion.length >= 20) {
+        alert("Orten måste innehålla minnst 2 tecken och Max 20 tecken");
+        return false;
+    }
+
+    document.getElementById('purchaseForm').reset();
+
+    return true;
+    // console.log(fName);
+    // console.log(fNumber);
+    // console.log(fEmail);
+    // console.log(fStreet);
+    // console.log(pNumber);
+    // console.log(fRegion);
+
+}
