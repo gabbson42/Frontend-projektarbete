@@ -32,7 +32,7 @@ function loadHomepage() {
             <div class="col mb-5">
                 <div class="card h-100">
                     <!-- Product image-->
-                    <img class="card-img-top" src="${element.image || element.images[0]}" alt="${element.title}" height="300"/>
+                    <img class="card-img-top" style="object-fit: contain" src="${element.image || element.images[0]}" alt="${element.title}" height="300"/>
                     <!-- Product details-->
                     <div class="card-body p-4">
                         <div class="text-center">
