@@ -110,7 +110,7 @@ if (document.getElementById("chosen-product")) {
       !pNumber.value ||
       !fRegion.value
     ) {
-      alert("const god och fyll i formuläret");
+      alert("Var god och fyll i formuläret");
     }
 
     if (fName.value.length < 3 || fName.value.length > 50) {
@@ -163,7 +163,7 @@ if (document.getElementById("chosen-product")) {
 
     if (!pNumber.value.match(postRegex)) {
       pNumber.classList.add("is-invalid");
-      divPost.innerHTML = "Postnummer måste consta exakt 5 siffror";
+      divPost.innerHTML = "Postnummer måste vara exakt 5 siffror";
       isValidated = false;
       pNumber.classList.remove("mb-4");
       setTimeout(() => {divPost.innerHTML = ""; pNumber.classList.add("mb-4");}, 3000)
