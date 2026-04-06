@@ -41,25 +41,33 @@
                         </div>
                     </header>
                     <form id="purchaseForm">
+
                         <label for="name" class="form-label">Namn</label>
-                        <input type="name" id="name" class="form-control mb-4" placeholder="John Doe">
+                        <input type="name" id="name" class="form-control mb-4" placeholder="John Doe" required>
+                        <div id="nameError" class="invalid-feedback"></div>
 
                         <label for="number" class="form-label">Telefonnummer</label>
-                        <input type="text" id="number" class="form-control mb-4" placeholder="T.ex. 0737004512">
+                        <input type="text" id="number" class="form-control mb-4" placeholder="T.ex. 0737004512" required>
+                        <div id="phoneError" class="invalid-feedback"></div>
 
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" id="email" class="form-control mb-4" placeholder="example@email.com">
+                        <input type="email" id="email" class="form-control mb-4" placeholder="example@email.com" required>
+                        <div id="emailError" class="invalid-feedback"></div>
 
-                        <label for="gata" class="form-label">Gata</label>
-                        <input type="text" id="street" class="form-control mb-4" placeholder="Adressvägen 42">
+                        <label for="street" class="form-label">Gata</label>
+                        <input type="text" id="street" class="form-control mb-4" placeholder="Adressvägen 42" required>
+                        <div id="streetError" class="invalid-feedback"></div>
 
                         <label for="postnumber" class="form-label">Postnummer</label>
-                        <input type="text" id="postNumber" class="form-control mb-4" placeholder="123 45">
+                        <input type="text" id="postNumber" class="form-control mb-4" placeholder="123 45" required>
+                        <div id="postError" class="invalid-feedback"></div>
 
                         <label for="region" class="form-label">Ort</label>
-                        <input type="text" id="region" class="form-control mb-4" placeholder="Ortköping">
+                        <input type="text" id="region" class="form-control mb-4" placeholder="Ortköping" required>
+                        <div id="regionError" class="invalid-feedback"></div>
 
                         <button class="btn btn-outline-kademina mt-auto" id="order">Lägg beställning</button>
+                        
                     </form>
                 </div>
             </div>
