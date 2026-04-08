@@ -117,72 +117,45 @@ if (document.getElementById("chosen-product")) {
     }
 
     if (fName.value.length < 3 || fName.value.length > 50) {
-      fName.classList.add("is-invalid");
-      divName.innerHTML = "Ogiltigt Namn";
+      inputHasError(fName, divName, "Ogiltigt Namn")
       isValidated = false;
-      fName.classList.remove("mb-4");
-      setTimeout(() => {divName.innerHTML = ""; fName.classList.add("mb-4");}, 3000)
     } else {
-      fName.classList.remove("is-invalid");
-      fName.classList.add("is-valid");
+      inputIsValid(fName);
     }
 
     if (!fNumber.value.match(phoneRegex)) {
-      fNumber.classList.add("is-invalid");
-      divNumber.innerHTML =
-        "Telefonnummer får innehålla siffror, bindestreck och parenteser. Max 20 tecken.";
+      inputHasError(fNumber, divNumber, "Telefonnummer får innehålla siffror, bindestreck och parenteser. Max 20 tecken.")
       isValidated = false;
-      fNumber.classList.remove("mb-4");
-      setTimeout(() => {divNumber.innerHTML = ""; fNumber.classList.add("mb-4");}, 3000)
     } else {
-      fNumber.classList.remove("is-invalid");
-      fNumber.classList.add("is-valid");
+      inputIsValid(fNumber);
     }
 
-    if (fEmail.value.indexOf("@") == -1 || fNumber.value.length > 50) {
-      fEmail.classList.add("is-invalid");
-      divEmail.innerHTML = "E-postadressen måste innehålla @ och max 50 tecken";
+    if (fEmail.value.indexOf("@") == -1 || fEmail.value.length > 50) {
+      inputHasError(fEmail, divEmail, "E-postadressen måste innehålla @ och max 50 tecken")
       isValidated = false;
-      fEmail.classList.remove("mb-4");
-      setTimeout(() => {divEmail.innerHTML = ""; fEmail.classList.add("mb-4");}, 3000)
     } else {
-      fEmail.classList.remove("is-invalid");
-      fEmail.classList.add("is-valid");
+      inputIsValid(fEmail);
     }
 
     if (fStreet.value.length < 3 || fStreet.value.length > 50) {
-      fStreet.classList.add("is-invalid");
-      divStreet.innerHTML =
-        "Gatuadressen måste innerhålla Minst 2 tecken och Max 50 tecken";
+      inputHasError(fStreet, divStreet, "Gatuadressen måste innerhålla Minst 2 tecken och Max 50 tecken")
       isValidated = false;
-      fStreet.classList.remove("mb-4");
-      setTimeout(() => {divStreet.innerHTML = ""; fStreet.classList.add("mb-4");}, 3000)
     } else {
-      fStreet.classList.remove("is-invalid");
-      fStreet.classList.add("is-valid");
+      inputIsValid(fStreet);
     }
 
     if (!pNumber.value.match(postRegex)) {
-      pNumber.classList.add("is-invalid");
-      divPost.innerHTML = "Postnummer måste vara exakt 5 siffror";
+      inputHasError(pNumber, divPost, "Postnummer måste vara exakt 5 siffror")
       isValidated = false;
-      pNumber.classList.remove("mb-4");
-      setTimeout(() => {divPost.innerHTML = ""; pNumber.classList.add("mb-4");}, 3000)
     } else {
-      pNumber.classList.remove("is-invalid");
-      pNumber.classList.add("is-valid");
+      inputIsValid(pNumber);
     }
 
     if (fRegion.value.length < 3 || fRegion.value.length >= 20) {
-      fRegion.classList.add("is-invalid");
-      divRegion.innerHTML =
-        "Orten måste innehålla minnst 2 tecken och Max 20 tecken";
+      inputHasError(fRegion, divRegion, "Orten måste innehålla minnst 2 tecken och Max 20 tecken")
       isValidated = false;
-      fRegion.classList.remove("mb-4");
-      setTimeout(() => {divRegion.innerHTML = ""; fRegion.classList.add("mb-4");}, 3000)
     } else {
-      fRegion.classList.remove("is-invalid");
-      fRegion.classList.add("is-valid");
+      inputIsValid(fRegion);
     }
 
     if (isValidated) {
@@ -195,6 +168,18 @@ if (document.getElementById("chosen-product")) {
         window.location.assign("confirmation.html");
     }
   });
+}
+
+function inputIsValid(input){
+  input.classList.remove("is-invalid");
+  input.classList.add("is-valid");
+}
+
+function inputHasError(inputField, errorField, errorMessage){
+  inputField.classList.add("is-invalid");
+  inputField.classList.remove("mb4");
+  errorField.innerHTML = errorMessage;
+  setTimeout(() => {errorField.innerHTML = ""; inputField.classList.add("mb-4");}, 3000);
 }
 
 function loadConfirmationPage(){
