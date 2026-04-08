@@ -148,8 +148,6 @@ if (document.getElementById("chosen-product")) {
     } else {
       fEmail.classList.remove("is-invalid");
       fEmail.classList.add("is-valid");
-      divEmail.innerHTML = "";
-      fEmail.classList.add("mb-4");
     }
 
     if (fStreet.value.length < 3 || fStreet.value.length > 50) {
